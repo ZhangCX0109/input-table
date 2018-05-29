@@ -8,22 +8,28 @@
 <body>
 
 <div class="form-group" id='input_table'></div>
+<button id="btn" onclick="btnClick()">获取结果</button>
 
 <script src="jquery-1.12.4.min.js" type="text/javascript"></script>
 <script src="bootstrap.min.js" type="text/javascript"></script>
 <script src="inputs-table.js" type="text/javascript"></script>
 <script>
     var dropMenu = [ '类型', '  摄像机', '  光猫 (ONU)' ];
+    var deviceName = ['设备名称' ,['摄像机1','摄像机2'],['光猫1','光猫2']];
     var options = {
-        needPanel : true,//是否需要面板
-        titleArr : [ dropMenu,'插座位置', '设备名称', 'IP', 'Port', 'Mac', '生产厂家', '型号',
+        titleArr : [ dropMenu,'插座位置', deviceName, 'IP', 'Port', 'Mac',
             '序列号', '用户名', '密码' ],//表头数组
         isEdit:false,//是否以编辑的模式显示
         isDetail : false,//是否以查看的模式显示
-        panelTitle : '添加检测项目'
+        panelTitle : '添加检测项目',
+        ctrlCol : '类型'//用来指定哪一列的下拉选项用来控制其他下拉选项
     };
     var oldData = [];
     inputTab.initTable($('#input_table'),options,oldData);
+
+    function btnClick() {
+        console.log(inputTab.getResult());
+    }
 
 </script>
 </body>
